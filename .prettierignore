@@ -1,0 +1,8 @@
+/.firebase
+/dist
+node_modules
+/package.json
+/.vscode
+/.idea
+/.angular
+.angular

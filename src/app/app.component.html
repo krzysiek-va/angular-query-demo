@@ -1,2 +1,23 @@
 <angular-query-devtools initialIsOpen></angular-query-devtools>
-<router-outlet />
+<header>
+  <nav class="bg-white shadow dark:bg-gray-800">
+    <div
+      class="container flex items-center py-1 px-2 text-gray-600 capitalize dark:text-gray-300">
+      <a
+        class="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-4"
+        routerLink="/posts"
+        routerLinkActive="!border-blue-500"
+        >Posts</a
+      >
+      <a
+        class="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-4"
+        routerLink="/comments"
+        routerLinkActive="!border-blue-500"
+        >Comments</a
+      >
+    </div>
+  </nav>
+</header>
+<main class="px-5 py-2">
+  <router-outlet />
+</main>

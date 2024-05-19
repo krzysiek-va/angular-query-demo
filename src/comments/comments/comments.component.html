@@ -1,0 +1,28 @@
+<section>
+  <h1 class="text-2xl mb-2 font-semibold text-gray-800">Comments</h1>
+  <input
+    class="placeholder-gray-500/70 rounded-md border border-gray-200 px-3 py-1 mb-2 text-gray-700 focus:border-blue-400 focus:outline-none"
+    placeholder="Search..."
+    [formControl]="searchControl" />
+  @if (!commentsListQuery.data() && commentsListQuery.isPending()) {
+    <div>Loading comments...</div>
+  } @else if (commentsListQuery.isError()) {
+    <p>Error: {{ commentsListQuery.error().message }}</p>
+  } @else {
+    <ul class="pl-5">
+      @for (comment of commentsListQuery.data(); track comment.id) {
+        <li
+          class="max-w-64"
+          appDataCached
+          [queryKey]="queryKeyFactory(comment.id)">
+          <a [routerLink]="[comment.id]">{{ comment.text }}</a>
+          <button
+            class="float-right bg-trash h-4 w-4"
+            (click)="onDeleteComment(comment.id)"></button>
+        </li>
+      } @empty {
+        <li>No comments found</li>
+      }
+    </ul>
+  }
+</section>

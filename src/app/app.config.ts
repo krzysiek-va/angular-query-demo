@@ -1,18 +1,27 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  ApplicationConfig,
+  provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
-import {provideAngularQuery, QueryClient} from "@tanstack/angular-query-experimental";
+import {
+  provideAngularQuery,
+  QueryClient,
+} from '@tanstack/angular-query-experimental';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
-    provideAngularQuery(new QueryClient({
-      defaultOptions: {
-        queries: {
-
-        }
-      }
-    })),
-  ]
+    provideExperimentalZonelessChangeDetection(),
+    provideHttpClient(),
+    provideRouter(routes, withComponentInputBinding()),
+    provideAngularQuery(
+      new QueryClient({
+        defaultOptions: {
+          queries: {},
+        },
+      })
+    ),
+  ],
 };

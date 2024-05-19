@@ -4,7 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### client:
+`npm run start`
+#### server:
+1. copy `db.json.bak` as `db.json`
+
+2. `npm run start-server`
 
 ## Code scaffolding
 

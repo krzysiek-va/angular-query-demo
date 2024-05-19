@@ -1,0 +1,8 @@
+@if (commentQuery.isPending()) {
+  <p>Loading comment data...</p>
+} @else if (commentQuery.isError()) {
+  <p>Error: {{ commentQuery.error().message }}</p>
+} @else {
+  <h3>{{ commentQuery.data()?.nickname }}</h3>
+  <p>{{ commentQuery.data()?.text }}</p>
+}
